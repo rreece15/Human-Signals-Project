@@ -1,26 +1,20 @@
+// app/index.tsx
+import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { View, Text, Button, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 
-// Define navigation types
-type RootStackParamList = {
-  SignIn: undefined;
-  Home: undefined;
-};
+export function headers() {
+  return { title: "", headerShown: false };
+}
 
-// Define navigation prop type for SignIn screen
-type SignInScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, "SignIn">;
-
-const SignIn: React.FC = () => {
+export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigation = useNavigation<SignInScreenNavigationProp>();
+  const router = useRouter();
 
   const handleSignIn = () => {
-    // Placeholder function for sign-in logic
     console.log("Signing in with", email, password);
-    navigation.navigate("Home"); // Navigate to Home screen after sign-in
+    router.push({ pathname: "/second", params: { username: email } }); // Navigate to Home screen
   };
 
   return (
@@ -49,7 +43,7 @@ const SignIn: React.FC = () => {
       </TouchableOpacity>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -58,6 +52,26 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
     backgroundColor: "#f8f8f8",
+  },
+  header: {
+    width: "100%",
+    paddingVertical: 20,
+    backgroundColor: "#007BFF",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 30,
+    borderBottomLeftRadius: 15,
+    borderBottomRightRadius: 15,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.2,
+    shadowRadius: 5,
+    elevation: 5,
+  },
+  headerText: {
+    color: "white",
+    fontSize: 22,
+    fontWeight: "bold",
   },
   title: {
     fontSize: 24,
@@ -93,5 +107,3 @@ const styles = StyleSheet.create({
     color: "#007BFF",
   },
 });
-
-export default SignIn;
