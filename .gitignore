@@ -1,6 +1,7 @@
 venv
 .env
 CSVFiles
+WeatherCSVs
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
