@@ -2,6 +2,9 @@ venv
 .env
 CSVFiles
 WeatherCSVs
+Data(Reece)
+ReeceCSV
+ReeceWeatherCSVs
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
